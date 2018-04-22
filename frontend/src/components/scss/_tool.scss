@@ -1,0 +1,18 @@
+@function parseInt($n)
+{
+  @return $n / ($n * 0 + 1);
+}
+@function rem($value, $scale: 16px)
+{
+  $root: $scale;
+  $val: parseInt($value);
+  $return: ();
+  @if unit($value) == 'px'
+  {
+    $return: append($return, ($value / $root * 1rem));
+  } @else
+  {
+    $return: append($return, ($value * $root * 1px));
+  }
+  @return $return;
+}
